@@ -1,8 +1,8 @@
 <template>
   <div>
     <label for="email">Zaloguj się e-mailem</label>
-    <input v-bind:class="{ errorInput: error }" id="email" type="email" v-model="email">
-    <p class="error" v-if="error">Wpisz poprawny adres email</p>
+    <input v-bind:class="{ errorInput: emailError }" id="email" type="email" v-model="email">
+    <p class="error" v-if="emailError">Wpisz poprawny adres email</p>
     <button @click="enter()">{{ buttonLabel }}</button>
   </div>
 </template>
@@ -12,13 +12,12 @@
     data() {
       return {
         email: '',
-        error: false,
         buttonLabel: ''
       }
     },
     methods: {
       enter() {
-        if(!this.error) {
+        if(!this.emailError) {
           this.$emit('login', this.email);
         }
       }
@@ -28,9 +27,9 @@
         this.buttonLabel = 'Zaloguj się';
       }
     },
-    watch: {
-      email: function() {
-        this.email.length > 3 ? (this.error = false) : (this.error=true);
+    computed: {
+      emailError: function() {
+        return this.email.length < 3;
       }
     }
   }
