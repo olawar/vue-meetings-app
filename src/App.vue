@@ -5,8 +5,9 @@
     <login-form v-if="!isAuthenticated" @login="logMeIn($event)" />
 
     <div v-else>
-      <h1>Zalogowałeś się jako {{ authenticatedUsername }}</h1>
+      <h2>Zalogowałeś się jako {{ authenticatedUsername }}</h2>
       <button @click="logMeOut()">Wychodzę</button>
+      <meeting-page/>
     </div>
 
   </div>
@@ -15,6 +16,7 @@
 <script>
 import "milligram";
 import LoginForm from "./LoginForm";
+import MeetingPage from "./MeetingPage";
 export default {
   name: 'app',
   data () {
@@ -34,7 +36,9 @@ export default {
       this.isAuthenticated = false;
     }
   },
-  components: {LoginForm},
+  components: {
+    MeetingPage,
+    LoginForm},
 }
 </script>
 
