@@ -5,7 +5,7 @@
       <div class="float-right"><button class="button button-outline" @click="logout()">Wychodzę</button></div>
     </div>
     <hr>
-    <meeting-page/>
+    <meeting-page :user="user"/>
   </div>
 </template>
 

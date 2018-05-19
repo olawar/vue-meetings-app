@@ -13,7 +13,9 @@
   export default {
     data() {
       return {
-        newMeeting: {}
+        newMeeting: {
+          participants: [],
+        }
       };
     },
     methods: {

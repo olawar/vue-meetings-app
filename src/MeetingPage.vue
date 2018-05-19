@@ -7,7 +7,7 @@
     
     <div v-if="meetings.length > 0">
       <h2>Zaplanowane zajęcia ({{meetings.length}})</h2>
-      <meetings-list :meetings="meetings"></meetings-list>
+      <meetings-list :meetings="meetings" :user="user" @subscribe="addParticipant($event)" @unsubscribe="removeParticipant($event)"></meetings-list>
     </div>
   </div>
 </template>
@@ -18,6 +18,7 @@
   
   export default {
     components: {NewMeetingForm, MeetingsList},
+    props: ['user'],
     data() {
       return {
         meetings: [],
@@ -31,6 +32,14 @@
       },
       openMeetingEditor() {
         this.editorVisible = true;
+      },
+      addParticipant(meeting) {
+        meeting.participants.push(this.user);
+      },
+      removeParticipant(meeting) {
+        meeting.participants = meeting.participants.filter((participant) => {
+          return participant !== this.user;
+        });
       }
     }
   }
