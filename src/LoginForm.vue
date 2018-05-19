@@ -1,7 +1,7 @@
 <template>
   <div>
     <label for="email">Zaloguj się e-mailem</label>
-    <input v-bind:class="{ errorInput: emailError }" id="email" type="email" v-model="email">
+    <input v-bind:class="{ 'error-input': emailError }" id="email" type="email" v-model="email">
     <p class="error" v-if="emailError">Wpisz poprawny adres email</p>
     <button @click="enter()">{{ buttonLabel }}</button>
   </div>
@@ -39,7 +39,7 @@
 .error {
   color: red;
 }
-.errorInput {
+.error-input {
   border: 1px solid red !important;
 }
 </style>

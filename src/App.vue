@@ -1,9 +1,16 @@
 <template>
   <div id="app">
-
     <h1 class="app-title">{{ msg }}</h1>
-    <login-form v-if="!isAuthenticated" @login="logMeIn($event)" :button-label="'Wchodzę'"/>
-    <content-page v-else @logout="logMeOut()" :user="authenticatedUsername" />
+    <login-form
+      v-if="!isAuthenticated"
+      @login="logMeIn($event)"
+      :button-label="'Wchodzę'">
+    </login-form>
+    <content-page
+      v-else
+      @logout="logMeOut()"
+      :user="authenticatedUsername">
+    </content-page>
   </div>
 </template>
 
@@ -57,11 +64,6 @@ h1, h2 {
 ul {
   padding: 0;
 }
-
-/*li {*/
-  /*display: inline-block;*/
-  /*margin: 0 10px;*/
-/*}*/
 
 a {
   color: #42b983;
