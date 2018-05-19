@@ -2,24 +2,15 @@
   <div id="app">
 
     <h1 class="app-title">{{ msg }}</h1>
-    <login-form v-if="!isAuthenticated" @login="logMeIn($event)" />
-
-    <div v-else>
-      <div class="clearfix">
-        <div class="float-left"><h2>Zalogowałeś się jako {{ authenticatedUsername }}</h2></div>
-        <div class="float-right"><button @click="logMeOut()">Wychodzę</button></div>
-      </div>
-      <hr>
-      <meeting-page/>
-    </div>
-
+    <login-form v-if="!isAuthenticated" @login="logMeIn($event)" :button-label="'Wchodzę'"/>
+    <content-page v-else @logout="logMeOut()" :user="authenticatedUsername" />
   </div>
 </template>
 
 <script>
 import "milligram";
 import LoginForm from "./LoginForm";
-import MeetingPage from "./MeetingPage";
+import ContentPage from "./ContentPage";
 export default {
   name: 'app',
   data () {
@@ -40,7 +31,7 @@ export default {
     }
   },
   components: {
-    MeetingPage,
+    ContentPage,
     LoginForm},
 }
 </script>

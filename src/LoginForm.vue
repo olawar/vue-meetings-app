@@ -9,10 +9,10 @@
 
 <script>
   export default {
+    props: ['buttonLabel'],
     data() {
       return {
         email: '',
-        buttonLabel: ''
       }
     },
     methods: {
