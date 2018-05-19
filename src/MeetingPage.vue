@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h3>Zajęcia</h3>
+    <h2>Zajęcia</h2>
     
     <button @click="openMeetingEditor()" v-show="!editorVisible">Dodaj nowe spotkanie</button>
     <new-meeting-form v-if="editorVisible" @added="addNewMeeting($event)"></new-meeting-form>
