@@ -1,13 +1,12 @@
 <template>
   <div>
-    <h2>Zajęcia</h2>
-    
     <button @click="openMeetingEditor()" v-show="!editorVisible">Dodaj nowe spotkanie</button>
     <new-meeting-form v-if="editorVisible" @added="addNewMeeting($event)"></new-meeting-form>
   
     <p v-if="meetings.length < 1">Nie masz zaplanowanych spotkań</p>
     
     <div v-if="meetings.length > 0">
+      <h2>Zaplanowane zajęcia ({{meetings.length}})</h2>
       <meetings-list :meetings="meetings"></meetings-list>
     </div>
   </div>
